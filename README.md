@@ -12,7 +12,6 @@
 | 🖥️ Colaborador (clonó el repo) | **Cristian Lubo** | ADSO 3 | [@cristianlubo-00](https://github.com/cristianlubo-00) |
 | 🖥️ Colaborador (clonó el repo) | **Camilo Andrés Luna** | ADSO 3 | [@AndresL2525](https://github.com/AndresL2525) |
 
-> **Nota:** Algunos commits aparecen bajo el usuario `@Froshi-iuri` porque trabajamos en diferentes computadores que tenían usuarios de Git preconfigurados. Los commits de `@Froshi-iuri` corresponden a Andres luna.
 
 ---
 
@@ -33,13 +32,13 @@ Recorrimos los 8 pasos de la guía base juntos, siguiendo el esquema de organiza
 | Paso | Descripción | Quién escribió el código | Commit representativo |
 |------|-------------|--------------------------|----------------------|
 | 1 | Conocer la API (endpoints, login, token) | Ambos (lo revisamos juntos en pantalla compartida) | — |
-| 2 | Crear el proyecto y permiso de Internet | Juan David | `creacion de archivos necesario` |
-| 3 | Agregar dependencias (Retrofit, Gson, OkHttp, corrutinas) | Juan David | `creacion de archivos necesario` |
-| 4 | Modelar los datos (data classes) | Juan David | `agregue todo el codigo a las clases, objetos e interfaces correspondientes` |
+| 2 | Crear el proyecto y permiso de Internet | Juan David | `creación del proyecto, configuracion decarpeta .idea y rama main y developer` |
+| 3 | Agregar dependencias (Retrofit, Gson, OkHttp, corrutinas) | Juan David | `configuración del gradel` |
+| 4 | Modelar los datos (data classes) | Juan David | `creacion de archivos necesario` |
 | 5 | Declarar los endpoints (interfaz) | Juan David | `agregue todo el codigo a las clases, objetos e interfaces correspondientes` |
 | 6 | Construir el cliente Retrofit | Juan David | `agregue todo el codigo a las clases, objetos e interfaces correspondientes` |
 | 7 | Unir todo: login → guardar token → pedir datos | Juan David | `actualizacion del mainActivity` |
-| 8 | Probar y leer el resultado en el Logcat | Todos | `Correcion de errores, confirmacion y se confirma resultado esperado` |
+| 8 | Probar y leer el resultado en el Logcat | Todos | `Correcion de errores, confirmacion y se confirma resultadao esperado en logcat` |
 
 ---
 
@@ -51,29 +50,8 @@ Recorrimos los 8 pasos de la guía base juntos, siguiendo el esquema de organiza
 | **Mostrar en pantalla** | Agregamos un `TextView` para mostrar nombre, correo y un mensaje visible si el login falla (en lugar de solo dejarlo en Logcat). | Cristian Lubo | `fix colors y ic_user` |
 | **SharedPreferences** | Guardamos el token en `SharedPreferences` para que, al volver a abrir la app, si ya hay sesión guardada se salte el formulario y pida directo los datos del usuario. | Juan David | `actualizacion del mainActivity` |
 | **Diseño Material** | Ajustamos botones, colores e iconos para darle una apariencia más profesional con Material Design. | Cristian Lubo | `feat ajustes de botton` |
+| **Corrección final** | Corrección de errores en el login y confirmación de funcionamiento de la app. | Juan David | `creacion del xml, correccion de errores y confirmación de funcion de la app` |
 
----
-
-## 📜 Historial de commits
-
-A continuación el historial real de commits del repositorio:
-
-| # | Autor | Hash | Mensaje |
-|---|-------|------|---------|
-| 1 | Juan David | `b315be8` | creacion de archivos necesario |
-| 2 | Juan David | `7dee787` | agregue todo el codigo a las clases, objetos e interfaces correspondientes |
-| 3 | Juan David | `60a83ff` | Merge pull request #1 from JDquintero1002/Cristian |
-| 4 | Cristian Lubo | `3441277` | feat archivo readme |
-| 5 | Juan David | `d27d66f` | actualizacion del mainActivity |
-| 6 | Juan David | `b789af4` | Correcion de errores, confirmacion y se confirma resultado esperado |
-| 7 | Juan David | `977de2c` | Merge pull request #2 from JDquintero1002/Cristian |
-| 8 | Cristian Lubo | `bbb6c1b` | Merge branch 'developer' |
-| 9 | Cristian Lubo | `e62be86` | fix archivo readme y xml |
-| 10 | Cristian Lubo | `fa617b5` | fix colors y ic_user |
-| 11 | Cristian Lubo | `cba47a7` | feat ajustes de botton |
-| 12 | Juan David | `a6a1015` | Merge pull request #3 from JDquintero1002/Andres |
-| 13 | Cristian Lubo | `06abd57` | fix login |
-| 14 | Cristian Lubo | `534...` | Merge branch 'developer' |
 
 ---
 
@@ -82,7 +60,7 @@ A continuación el historial real de commits del repositorio:
 ### Dificultad 1: Commits con usuario equivocado
 
 **¿Qué pasó?**
-> Al trabajar en diferentes computadores del salón, algunos commits se subieron con el usuario `@Froshi-iuri` en vez del usuario personal de GitHub de Cristian. Esto pasó porque esas máquinas ya tenían configurado un usuario de Git global diferente.
+> Al trabajar en diferentes computadores del salón, los commits de Cristian se subieron con el usuario `@Froshi-iuri` en vez de su usuario personal de GitHub. Esto pasó porque esas máquinas ya tenían configurado un usuario de Git global diferente.
 
 **¿Cómo lo resolvieron?**
 > Identificamos que los commits de `@Froshi-iuri` correspondían a Cristian Lubo. Documentamos esto en el README para que el profesor pueda verificar que todos los integrantes participaron. Para futuros proyectos, configuramos el usuario local del repositorio con `git config user.name` y `git config user.email` antes de hacer commits.
@@ -90,10 +68,10 @@ A continuación el historial real de commits del repositorio:
 ### Dificultad 2: Merge conflicts al integrar ramas
 
 **¿Qué pasó?**
-> Creamos ramas individuales (`Cristian`, `Andres`,`JDQA`,`developer`) para que cada quien trabajara sin pisar el código del otro. Al hacer los merge pull requests (#1, #2 y #3), hubo conflictos en `MainActivity.kt` y en `activity_main.xml` porque ambos estábamos tocando los mismos archivos.
+> Creamos ramas individuales (`Cristian`, `Andres`, `developer`) para que cada quien trabajara sin pisar el código del otro. Al hacer los merge pull requests (#1, #2, #3 y #5), hubo conflictos en `MainActivity.kt` y en `activity_main.xml` porque ambos estábamos tocando los mismos archivos.
 
 **¿Cómo lo resolvieron?**
-> Revisamos los conflictos en GitHub y en Android Studio, decidimos qué versión del código quedaba mejor, la unimos manualmente y hicimos los merges. Después de eso, empezamos a coordinar mejor quién tocaba qué archivo en cada momento.
+> Revisamos los conflictos en GitHub y en Android Studio, decidimos en videollamada qué versión del código quedaba mejor, la unimos manualmente y hicimos los merges. Después de eso, empezamos a coordinar mejor quién tocaba qué archivo en cada momento.
 
 ### Dificultad 3: Dependencias y versiones de Gradle
 
@@ -120,12 +98,11 @@ Agregar un mensaje visible en pantalla (por ejemplo un `Toast`) que aparezca si 
 
 | Integrante | Cantidad de commits | Enlace al perfil de GitHub |
 |------------|---------------------|----------------------------|
-| Juan David | 7 | [@JDquintero1002](https://github.com/JDquintero1002) |
-| Cristian Lubo | 7 | [@cristianlubo-00](https://github.com/cristianlubo-00) |
-| Camilo Andrés Luna | Participó en revisión y testing | [@AndresL2525](https://github.com/AndresL2525) |
+| Juan David | **11** | [@JDquintero1002](https://github.com/JDquintero1002) |
+| Cristian Lubo | **8** | [@cristianlubo-00](https://github.com/cristianlubo-00) |
+| Camilo Andrés Luna | **8** | [@AndresL2525](https://github.com/AndresL2525) |
 
-> **Nota:** Tanto Cristian Lubo (`cristianlubo-00`) como Camilo Andrés Luna (`AndresL2525`) no aparecen directamente en algunos commits debido a que estábamos trabajando en otros computadores que ya tenían un usuario de Git predeterminado (`@Froshi-iuri`). Los commits de `@Froshi-iuri` corresponden a Cristian Lubo.
-
+> **Nota sobre los commits:** Al trabajar en diferentes computadores del salón, los commits de Cristian Lubo aparecen bajo el usuario `@Froshi-iuri` porque esas máquinas tenían un usuario de Git global preconfigurado. Los commits de `@Froshi-iuri` corresponden a Camilo Andrés Luna.
 ---
 
 ## 🧪 API utilizada
@@ -170,6 +147,100 @@ Agregar un mensaje visible en pantalla (por ejemplo un `Toast`) que aparezca si 
 - [x] README.md con toda la documentación requerida.
 - [x] Respuestas individuales a las 5 preguntas de cierre (entregadas por separado).
 
+
+# Respuestas de Cierre — Reto Colaborativo
+
+---
+# Respuestas Individuales — Camilo Andres Luna
+## 1. Predicción
+
+Si cambiamos `@GET("auth/me")` por `@GET("auth/mee")`, el servidor no va a encontrar esa dirección porque no existe. El error sería **404 Not Found**.
+
+Aparecería en el Logcat como `HTTP FAILED: 404`, y en la app se activaría el mensaje de error que hicimos en el reto final (la tarjeta roja que dice que algo falló).
+
 ---
 
-> *Proyecto desarrollado como parte del reto colaborativo de programación en pareja.*
+## 2. Depuración
+
+**Causa 1:** El token no se está mandando bien en el encabezado. Si olvidamos poner `"Bearer "` antes del token, el servidor no lo reconoce y responde 401.
+
+**Causa 2:** El token ya expiró. Algunos tokens duran poco tiempo (como 15 minutos). Si pasó mucho tiempo entre el login y pedir los datos, el servidor dice que no es válido.
+
+---
+
+## 3. Transferencia
+
+Un ejemplo es **Instagram**. Haces login una vez y no te pide la contraseña de nuevo porque guarda un token.
+
+Ese token "vive" en el celular, guardado de forma segura (cifrado), normalmente en algo llamado **EncryptedSharedPreferences** o el **Keystore** del teléfono. Así, aunque alguien agarre tu celular, no puede leerlo fácilmente.
+
+Otro ejemplo es **Spotify**: inicias sesión y puedes escuchar música durante días sin volver a escribir tu contraseña.
+
+---
+
+## 4. Lectura de código
+
+`getCurrentUser` recibe el token como parámetro porque así la función **no depende de nada externo**. Solo necesita que le pasen el token y ya.
+
+Esto tiene dos ventajas:
+- Se puede probar más fácilmente (le pasas un token de prueba y listo).
+- Se puede usar desde cualquier parte de la app sin depender de SharedPreferences ni de variables globales.
+
+Si leyera el token directamente de dentro de la función, estaría "amarrada" a una sola forma de obtenerlo y sería más difícil de reutilizar.
+
+---
+
+## 5. Justificación de diseño
+
+El riesgo de guardar el token en SharedPreferences sin cifrar es que **cualquiera puede leerlo** si tiene acceso al celular.
+
+Por ejemplo:
+- Si el celular tiene acceso root, una app maliciosa puede abrir el archivo donde se guarda y leer el token en texto plano.
+- Si se hace un backup de la app a la nube, el token viaja sin protección.
+- Con ese token, un atacante puede hacerse pasar por el usuario y usar la API como si fuera él.
+
+En una app real se debería usar **EncryptedSharedPreferences** o el **Android Keystore**, que cifran el token antes de guardarlo.
+
+
+# Respuestas Individuales — Cristian Lubo
+
+
+## 1. Predicción
+
+Si cambian `@GET("auth/me")` por `@GET("auth/mee")` (un typo), el servidor no encuentra esa dirección porque no existe. El error sería **404 Not Found**.
+
+Ese error aparecería en el Logcat como `HTTP FAILED: 404`, y en la app se activaría el mensaje de error que hicimos en el reto final.
+
+---
+
+## 2. Depuración
+
+Las dos causas más probables son:
+
+- **Que el token no se esté enviando junto con la petición.** Si no se manda bien en el header, el servidor no reconoce al usuario y responde 401.
+- **Que el token ya no sirva porque venció o se guardó mal.** Algunos tokens duran poco tiempo, entonces si pasó mucho rato entre el login y pedir los datos, el servidor dice que no es válido.
+
+---
+
+## 3. Transferencia
+
+Un ejemplo sería **Nequi**. Cuando iniciamos sesión, la aplicación guarda un token en el celular y ese token se utiliza para comprobar que somos nosotros cada vez que hacemos una transferencia o vemos nuestros movimientos, sin tener que volver a iniciar sesión. El token queda guardado dentro de la aplicación en el dispositivo para que la sesión se mantenga activa.
+
+---
+
+## 4. Lectura de código
+
+`getCurrentUser` recibe el token como parámetro porque así la función es más fácil de usar, pero necesita que le envíen el token y puede funcionar sin depender de una variable que esté en otra parte del programa.
+
+Si leyera el token directamente desde adentro, estaría amarrada a una sola forma de obtenerlo y no se podría reutilizar tan fácil.
+
+---
+
+## 5. Justificación de diseño
+
+Si alguien logra entrar a los archivos de la aplicación, podría ver el token y usarlo para entrar a la cuenta del usuario sin necesidad de saber la contraseña. Por eso en una app real se debería guardar el token cifrado.
+
+---
+
+
+
