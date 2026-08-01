@@ -8,7 +8,7 @@
 
 | Rol | Nombre | Salón |
 |-----|--------|-------|
-| 🏗️ Creador del repositorio | **Tu Nombre** | ADSO 1 |
+| 🏗️ Creador del repositorio | **Juan David** | ADSO 1 |
 | 🖥️ Colaborador (clonó el repo) | **Cristian Lubo** | ADSO 3 |
 🖥️ Colaborador (clonó el repo) | **Camilo Andres Luna** | ADSO 3 |
 
@@ -90,9 +90,9 @@ Agregar un mensaje visible en pantalla (por ejemplo un `Toast`) que aparezca si 
 
 | Integrante | Cantidad de commits | Enlace al perfil de GitHub |
 |------------|---------------------|----------------------------|
-| [Cristian Lubo] | 7+ | [@cristianlubo-00](https://github.com/cristianlubo-00) |
+| [Cristian Lubo]  | 7+ | [@cristianlubo-00](https://github.com/cristianlubo-00) |
 | [Camilo Andres Luna] | 7+ | [@ANdresL2525](https://github.com/AndresL2525) |
-| [Camilo Andres Luna] | 7+ | [@ANdresL2525](https://github.com/JDquintero1002) |
+| [Juan David] | 7+ | [@ANdresL2525](https://github.com/JDquintero1002) |
 
 **Nota: Tanto cristian lubo (cristianlubo-00) como Andres Luna (AndresL2525) no aparecen en los comits debedido a que estamos trabajando en otros computadores y estos ya tenian unos usario predeterminados**
 
