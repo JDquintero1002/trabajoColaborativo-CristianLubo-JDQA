@@ -1,11 +1,10 @@
+package com.example.trabajocolaborativo_cl_jdqa
+
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.trabajocolaborativo_cl_jdqa.R
-import com.example.trabajocolaborativo_cl_jdqa.RetrofitClient
 import kotlinx.coroutines.launch
-
 class MainActivity : AppCompatActivity() {
 
     private var token: String? = null   // aquí guardaremos la "manilla"
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 // ojo: el formato es "Bearer " + token
-                val resp = RetrofitClient.api.getCurrentUser("Bearer $t")
+                val resp = RetrofitClient.api.getCurrentUser("Bearer " + t)
                 if (resp.isSuccessful) {
                     val user = resp.body()
                     Log.d("API", "Hola ${user?.firstName} - ${user?.email}")
