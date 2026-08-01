@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
-
 class MainActivity : AppCompatActivity() {
 
     private var token: String? = null   // aquí guardaremos la "manilla"
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 // ojo: el formato es "Bearer " + token
-                val resp = RetrofitClient.api.getCurrentUser("Bearer" + token)
+                val resp = RetrofitClient.api.getCurrentUser("Bearer " + t)
                 if (resp.isSuccessful) {
                     val user = resp.body()
                     Log.d("API", "Hola ${user?.firstName} - ${user?.email}")
