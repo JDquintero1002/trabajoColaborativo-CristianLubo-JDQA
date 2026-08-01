@@ -5,7 +5,7 @@
 ---
 
 ## 👥 Equipo
-
+ 
 | Rol | Nombre | Salón | GitHub |
 |-----|--------|-------|--------|
 | 🏗️ Creador del repositorio | **Juan David** | ADSO 1 | [@JDquintero1002](https://github.com/JDquintero1002) |
