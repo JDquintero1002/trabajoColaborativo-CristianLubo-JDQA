@@ -178,19 +178,28 @@ RESPUESTAS INDIVIDUALES:
 Juan David Quintero 
 1.	Predicción
 Si cambian @GET("auth/me") por @GET("auth/mee") (un typo), ¿qué error esperarían ver y en qué parte del código aparecería?
+
 Rta: Se puede esperar ver un error  de servidor 404, porque la ruta "auth/mee" no existe en la API, ese error aparecía en la respuesta de la petición
-2.	Depuración
+
+3.	Depuración
 "Recibo error 401 al pedir los datos del usuario, pero el login sí funcionó." ¿Cuáles son las dos causas más probables?
+
 Rta: El token no se envió bien en el encabezado o el token caduco o no exite
-3.	Transferencia
+
+5.	Transferencia
 ¿En qué otras apps que usan a diario reconocen este mismo patrón de login → token → petición protegida? Den un ejemplo y expliquen dónde "vive" el token ahí.
+
 Rta: Instagram. Cuando abro la app e inicio sesión, no me vuelve a pedir la contraseña cada vez que pongo una publicación o en caso de buscar algo. El token queda guardado localmente en el almacenamiento del teléfono o desde el navegador y la app valida automáticamente.
-4.	Lectura de código
+
+7.	Lectura de código
 ¿Por qué getCurrentUser recibe el token como parámetro en vez de leerlo directamente de una variable dentro de la función?
+
 Rta: 
 Porque así funciona mas limpia y flexible. En lugar de obligar a getCurrentUser  a saber de donde sacar el token y simplemente pasamos el dato que necesita.
-5.	Justificación de diseño
+
+9.	Justificación de diseño
 ¿Qué riesgo ven en guardar el token en SharedPreferences sin cifrar? (no se espera que lo resuelvan, solo que lo identifiquen).
+
 Rta:
 El riego principal es de seguridad: si los archivos del teléfono quedan expuestos en un celular rooteado o mediante herramientas de inspección de apps, cualquiera podría leer el token en el texto plano. Copiarlo y usarlo para meterse en cuentas desde otro lado sin saber la contraseña 
 
