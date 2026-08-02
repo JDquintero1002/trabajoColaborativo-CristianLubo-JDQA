@@ -148,99 +148,65 @@ Agregar un mensaje visible en pantalla (por ejemplo un `Toast`) que aparezca si 
 - [x] Respuestas individuales a las 5 preguntas de cierre (entregadas por separado).
 
 
-# Respuestas de Cierre — Reto Colaborativo
-
----
-# Respuestas Individuales — Camilo Andres Luna
-## 1. Predicción
-
-Si cambiamos `@GET("auth/me")` por `@GET("auth/mee")`, el servidor no va a encontrar esa dirección porque no existe. El error sería **404 Not Found**.
-
-Aparecería en el Logcat como `HTTP FAILED: 404`, y en la app se activaría el mensaje de error que hicimos en el reto final (la tarjeta roja que dice que algo falló).
-
 ---
 
-## 2. Depuración
+## 💬 Respuestas Individuales de Cierre
 
-**Causa 1:** El token no se está mandando bien en el encabezado. Si olvidamos poner `"Bearer "` antes del token, el servidor no lo reconoce y responde 401.
+### 👤 Camilo Andrés Luna
 
-**Causa 2:** El token ya expiró. Algunos tokens duran poco tiempo (como 15 minutos). Si pasó mucho tiempo entre el login y pedir los datos, el servidor dice que no es válido.
+#### 1. Predicción
+Si cambiamos `@GET("auth/me")` por `@GET("auth/mee")`, el servidor no va a encontrar esa dirección porque no existe. El error sería **404 Not Found**. Aparecería en el Logcat como `HTTP FAILED: 404`, y en la app se activaría el mensaje de error que hicimos en el reto final (la tarjeta roja que dice que algo falló).
 
----
+#### 2. Depuración
+* **Causa 1:** El token no se está mandando bien en el encabezado. Si olvidamos poner `"Bearer "` antes del token, el servidor no lo reconoce y responde 401.
+* **Causa 2:** El token ya expiró. Algunos tokens duran poco tiempo (como 15 minutos). Si pasó mucho tiempo entre el login y pedir los datos, el servidor dice que no es válido.
 
-## 3. Transferencia
+#### 3. Transferencia
+Un ejemplo es **Instagram**. Haces login una vez y no te pide la contraseña de nuevo porque guarda un token. Ese token "vive" en el celular, guardado de forma segura (cifrado), normalmente en **EncryptedSharedPreferences** o el **Keystore** del teléfono. Otro ejemplo es **Spotify**: inicias sesión y puedes escuchar música durante días sin volver a escribir tu contraseña.
 
-Un ejemplo es **Instagram**. Haces login una vez y no te pide la contraseña de nuevo porque guarda un token.
+#### 4. Lectura de código
+`getCurrentUser` recibe el token como parámetro porque así la función **no depende de nada externo**. Solo necesita que le pasen el token y ya. Esto permite probarla más fácilmente y reutilizarla desde cualquier parte de la app sin depender de SharedPreferences ni de variables globales.
 
-Ese token "vive" en el celular, guardado de forma segura (cifrado), normalmente en algo llamado **EncryptedSharedPreferences** o el **Keystore** del teléfono. Así, aunque alguien agarre tu celular, no puede leerlo fácilmente.
-
-Otro ejemplo es **Spotify**: inicias sesión y puedes escuchar música durante días sin volver a escribir tu contraseña.
+#### 5. Justificación de diseño
+El riesgo de guardar el token en SharedPreferences sin cifrar es que **cualquiera puede leerlo** si tiene acceso al celular (por ejemplo, si el teléfono tiene acceso root o mediante backups). En una app real se debería usar **EncryptedSharedPreferences** o el **Android Keystore**.
 
 ---
 
-## 4. Lectura de código
+### 👤 Cristian Lubo
 
-`getCurrentUser` recibe el token como parámetro porque así la función **no depende de nada externo**. Solo necesita que le pasen el token y ya.
+#### 1. Predicción
+Si cambian `@GET("auth/me")` por `@GET("auth/mee")` (un typo), el servidor no encuentra esa dirección porque no existe. El error sería **404 Not Found**. Aparecería en el Logcat como `HTTP FAILED: 404`, y en la app se activaría el mensaje de error que hicimos en el reto final.
 
-Esto tiene dos ventajas:
-- Se puede probar más fácilmente (le pasas un token de prueba y listo).
-- Se puede usar desde cualquier parte de la app sin depender de SharedPreferences ni de variables globales.
+#### 2. Depuración
+* **Causa 1:** Que el token no se esté enviando junto con la petición. Si no se manda bien en el header, el servidor no reconoce al usuario y responde 401.
+* **Causa 2:** Que el token ya no sirva porque venció o se guardó mal. Algunos tokens duran poco tiempo, entonces si pasó mucho rato entre el login y pedir los datos, el servidor dice que no es válido.
 
-Si leyera el token directamente de dentro de la función, estaría "amarrada" a una sola forma de obtenerlo y sería más difícil de reutilizar.
+#### 3. Transferencia
+Un ejemplo sería **Nequi**. Cuando iniciamos sesión, la aplicación guarda un token en el celular y ese token se utiliza para comprobar que somos nosotros cada vez que hacemos una transferencia o vemos nuestros movimientos, sin tener que volver a iniciar sesión. El token queda guardado dentro de la aplicación en el dispositivo.
 
----
+#### 4. Lectura de código
+`getCurrentUser` recibe el token como parámetro porque así la función es más fácil de usar; necesita que le envíen el token y puede funcionar sin depender de una variable que esté en otra parte del programa.
 
-## 5. Justificación de diseño
-
-El riesgo de guardar el token en SharedPreferences sin cifrar es que **cualquiera puede leerlo** si tiene acceso al celular.
-
-Por ejemplo:
-- Si el celular tiene acceso root, una app maliciosa puede abrir el archivo donde se guarda y leer el token en texto plano.
-- Si se hace un backup de la app a la nube, el token viaja sin protección.
-- Con ese token, un atacante puede hacerse pasar por el usuario y usar la API como si fuera él.
-
-En una app real se debería usar **EncryptedSharedPreferences** o el **Android Keystore**, que cifran el token antes de guardarlo.
-
-
-# Respuestas Individuales — Cristian Lubo
-
-
-## 1. Predicción
-
-Si cambian `@GET("auth/me")` por `@GET("auth/mee")` (un typo), el servidor no encuentra esa dirección porque no existe. El error sería **404 Not Found**.
-
-Ese error aparecería en el Logcat como `HTTP FAILED: 404`, y en la app se activaría el mensaje de error que hicimos en el reto final.
-
----
-
-## 2. Depuración
-
-Las dos causas más probables son:
-
-- **Que el token no se esté enviando junto con la petición.** Si no se manda bien en el header, el servidor no reconoce al usuario y responde 401.
-- **Que el token ya no sirva porque venció o se guardó mal.** Algunos tokens duran poco tiempo, entonces si pasó mucho rato entre el login y pedir los datos, el servidor dice que no es válido.
-
----
-
-## 3. Transferencia
-
-Un ejemplo sería **Nequi**. Cuando iniciamos sesión, la aplicación guarda un token en el celular y ese token se utiliza para comprobar que somos nosotros cada vez que hacemos una transferencia o vemos nuestros movimientos, sin tener que volver a iniciar sesión. El token queda guardado dentro de la aplicación en el dispositivo para que la sesión se mantenga activa.
-
----
-
-## 4. Lectura de código
-
-`getCurrentUser` recibe el token como parámetro porque así la función es más fácil de usar, pero necesita que le envíen el token y puede funcionar sin depender de una variable que esté en otra parte del programa.
-
-Si leyera el token directamente desde adentro, estaría amarrada a una sola forma de obtenerlo y no se podría reutilizar tan fácil.
-
----
-
-## 5. Justificación de diseño
-
+#### 5. Justificación de diseño
 Si alguien logra entrar a los archivos de la aplicación, podría ver el token y usarlo para entrar a la cuenta del usuario sin necesidad de saber la contraseña. Por eso en una app real se debería guardar el token cifrado.
 
 ---
 
+### 👤 Juan David Quintero
 
+#### 1. Predicción
+Se puede esperar ver un error de servidor **404 Not Found**, porque la ruta `"auth/mee"` no existe en la API. Ese error aparecería en la respuesta de la petición.
 
+#### 2. Depuración
+Las dos causas más probables son:
+* El token no se envió correctamente en el encabezado.
+* El token caducó o no existe.
+
+#### 3. Transferencia
+**Instagram**. Cuando abro la app e inicio sesión, no me vuelve a pedir la contraseña cada vez que pongo una publicación o hago una búsqueda. El token queda guardado localmente en el almacenamiento del teléfono (o en el navegador) y la app valida automáticamente.
+
+#### 4. Lectura de código
+Porque así funciona más limpia y flexible. En lugar de obligar a `getCurrentUser` a saber de dónde sacar el token, simplemente le pasamos el dato que necesita como parámetro.
+
+#### 5. Justificación de diseño
+El riesgo principal es de seguridad: si los archivos del teléfono quedan expuestos en un celular rooteado o mediante herramientas de inspección de apps, cualquiera podría leer el token en texto plano, copiarlo y usarlo para acceder a la cuenta desde otro lugar sin saber la contraseña.
